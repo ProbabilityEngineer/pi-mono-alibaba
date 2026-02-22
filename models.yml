@@ -1,0 +1,18 @@
+providers:
+  Alibaba:
+    baseUrl: https://coding-intl.dashscope.aliyuncs.com/v1
+    api: openai-completions
+    apiKey: ""
+    auth: apiKey
+    authHeader: true
+
+    models:
+      - id: "qwen3.5-plus"
+        name: "qwen3.5-plus"
+        reasoning: true
+        input: [text, image]
+        cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 }
+        contextWindow: 262144
+        maxTokens: 65536
+        compat:
+          supportsDeveloperRole: false
