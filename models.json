@@ -8,23 +8,6 @@
       "authHeader": true,
       "models": [
         {
-<<<<<<< HEAD
-          "id": "qwen3.5-plus",
-          "name": "qwen3.5-plus",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "cost": {
-            "input": 0,
-            "output": 0,
-            "cacheRead": 0,
-            "cacheWrite": 0
-          },
-          "contextWindow": 262144,
-          "maxTokens": 65536,
-          "compat": {
-            "supportsDeveloperRole": false
-          }
-=======
           "id": "qwen3-max-2026-01-23",
           "name": "qwen3-max-2026-01-23 Thinking",
           "reasoning": true,
@@ -123,7 +106,6 @@
           "contextWindow": 229376,
           "maxTokens": 16384,
           "compat": { "supportsDeveloperRole": false }
->>>>>>> 44076b7 (all models listed as served in the Alibaba docs)
         }
       ]
     }

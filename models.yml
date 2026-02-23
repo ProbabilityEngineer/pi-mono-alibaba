@@ -1,15 +1,20 @@
-<<<<<<< HEAD
-=======
+---
+cat > models.yml <<'YAML'
+---
 # Consolidated provider + normalized schema.
 #
-# Safety convention used in comments:
-# - "256k tier ceiling" assumed to be 262144 tokens (256 Ki).
-# - Safety headroom = 262144 - (contextWindow + maxTokens).
+# Safety conventions:
+# - 256k-tier ceiling: 262144 tokens (256 Ki)
+# - Headroom = 262144 - (contextWindow + maxTokens)
 #
-# Your chosen compaction cap:
-# - 229376 tokens (224 Ki) keeps you below the 256k-tier ceiling with room for stability.
+# Standard stable profile:
+# - contextWindow: 229376 (224 Ki)
+# - maxTokens: 16384 (16 Ki)
+# - total: 245760 (240 Ki), headroom: 16384
+#
+# GLM-4.7 pricing tier note:
+# - contextWindow capped at 163840 (160 Ki) to stay under ~166K tier
 
->>>>>>> 44076b7 (all models listed as served in the Alibaba docs)
 providers:
   Alibaba:
     baseUrl: https://coding-intl.dashscope.aliyuncs.com/v1
@@ -19,22 +24,17 @@ providers:
     authHeader: true
 
     models:
-<<<<<<< HEAD
-      - id: "qwen3.5-plus"
-        name: "qwen3.5-plus"
-        reasoning: true
-        input: [text, image]
-        cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 }
-        contextWindow: 262144
-        maxTokens: 65536
-=======
       - id: qwen3-max-2026-01-23
         name: qwen3-max-2026-01-23 Thinking
         reasoning: true
         input: [text]
-        cost: { input: 3, output: 15, cacheRead: 3, cacheWrite: 3.75 }
-        contextWindow: 229376 # 224 Ki compaction cap under 256k-tier (262144)
-        maxTokens: 16384 # stable output cap; leaves safety headroom
+        cost:
+          input: 3
+          output: 15
+          cacheRead: 3
+          cacheWrite: 3.75
+        contextWindow: 229376
+        maxTokens: 16384
         compat:
           supportsDeveloperRole: false
 
@@ -42,9 +42,13 @@ providers:
         name: qwen3-max-2026-01-23 Non-Thinking
         reasoning: false
         input: [text]
-        cost: { input: 3, output: 15, cacheRead: 3, cacheWrite: 3.75 }
-        contextWindow: 229376 # 224 Ki compaction cap under 256k-tier (262144)
-        maxTokens: 16384 # stable output cap; leaves safety headroom
+        cost:
+          input: 3
+          output: 15
+          cacheRead: 3
+          cacheWrite: 3.75
+        contextWindow: 229376
+        maxTokens: 16384
         compat:
           supportsDeveloperRole: false
 
@@ -52,9 +56,13 @@ providers:
         name: qwen3.5-plus Thinking
         reasoning: true
         input: [text, image]
-        cost: { input: 0.4, output: 2.4, cacheRead: 0.48, cacheWrite: 0.5 }
-        contextWindow: 229376 # 224 Ki compaction cap under 256k-tier (262144)
-        maxTokens: 16384 # stable output cap; leaves safety headroom
+        cost:
+          input: 0.4
+          output: 2.4
+          cacheRead: 0.48
+          cacheWrite: 0.5
+        contextWindow: 229376
+        maxTokens: 16384
         compat:
           supportsDeveloperRole: false
 
@@ -62,9 +70,13 @@ providers:
         name: qwen3.5-plus Non-Thinking
         reasoning: false
         input: [text, image]
-        cost: { input: 0.4, output: 2.4, cacheRead: 0.48, cacheWrite: 0.5 }
-        contextWindow: 229376 # 224 Ki compaction cap under 256k-tier (262144)
-        maxTokens: 16384 # stable output cap; leaves safety headroom
+        cost:
+          input: 0.4
+          output: 2.4
+          cacheRead: 0.48
+          cacheWrite: 0.5
+        contextWindow: 229376
+        maxTokens: 16384
         compat:
           supportsDeveloperRole: false
 
@@ -72,9 +84,13 @@ providers:
         name: qwen3-coder-next - Non-Thinking Only
         reasoning: false
         input: [text, image]
-        cost: { input: 0.8, output: 4, cacheRead: 0, cacheWrite: 0 }
-        contextWindow: 229376 # 224 Ki compaction cap under 256k-tier (262144)
-        maxTokens: 16384 # stable output cap; leaves safety headroom
+        cost:
+          input: 0.8
+          output: 4
+          cacheRead: 0
+          cacheWrite: 0
+        contextWindow: 229376
+        maxTokens: 16384
         compat:
           supportsDeveloperRole: false
 
@@ -82,9 +98,13 @@ providers:
         name: qwen3-coder-plus Non-Thinking Only
         reasoning: false
         input: [text, image]
-        cost: { input: 3, output: 15, cacheRead: 3, cacheWrite: 3.75 }
-        contextWindow: 196608 # 192 Ki hard cost guardrail — keeps total budget below higher pricing tier (~$60/M tokens)
-        maxTokens: 49152 # 48 Ki output cap; total ≈ 245760 leaving 16384 headroom
+        cost:
+          input: 3
+          output: 15
+          cacheRead: 3
+          cacheWrite: 3.75
+        contextWindow: 196608
+        maxTokens: 49152
         compat:
           supportsDeveloperRole: false
 
@@ -92,9 +112,13 @@ providers:
         name: glm-4.7 Thinking
         reasoning: true
         input: [text, image]
-        cost: { input: 0.431, output: 3.154, cacheRead: 0.06308, cacheWrite: 0.53875 }
-        contextWindow: 163840 # 160 Ki; safely below GLM pricing tier max (~166K) and well under 256k ceiling (262144)
-        maxTokens: 16384 # 16 Ki output cap; high stability
+        cost:
+          input: 0.431
+          output: 3.154
+          cacheRead: 0.06308
+          cacheWrite: 0.53875
+        contextWindow: 163840
+        maxTokens: 16384
         compat:
           supportsDeveloperRole: false
 
@@ -102,9 +126,13 @@ providers:
         name: glm-4.7 Non-Thinking
         reasoning: false
         input: [text, image]
-        cost: { input: 0.431, output: 3.154, cacheRead: 0, cacheWrite: 0 }
-        contextWindow: 163840 # 160 Ki context cap; below GLM pricing tier max (~166K) and under 256k-tier ceiling (262144)
-        maxTokens: 16384 # 16 Ki output cap; high stability
+        cost:
+          input: 0.431
+          output: 3.154
+          cacheRead: 0
+          cacheWrite: 0
+        contextWindow: 163840
+        maxTokens: 16384
         compat:
           supportsDeveloperRole: false
 
@@ -112,9 +140,13 @@ providers:
         name: kimi-k2.5 Thinking
         reasoning: true
         input: [text, image]
-        cost: { input: 0.574, output: 2.294, cacheRead: 0, cacheWrite: 0 }
-        contextWindow: 229376 # 224 Ki compaction cap under 256k-tier (262144)
-        maxTokens: 16384 # stable output cap; leaves 16384 headroom under 262144
+        cost:
+          input: 0.574
+          output: 2.294
+          cacheRead: 0
+          cacheWrite: 0
+        contextWindow: 229376
+        maxTokens: 16384
         compat:
           supportsDeveloperRole: false
 
@@ -122,9 +154,12 @@ providers:
         name: kimi-k2.5 Non-Thinking
         reasoning: false
         input: [text, image]
-        cost: { input: 0.574, output: 2.294, cacheRead: 0, cacheWrite: 0 }
-        contextWindow: 229376 # 224 Ki compaction cap under 256k-tier (262144)
-        maxTokens: 16384 # stable output cap; leaves safety headroom
->>>>>>> 44076b7 (all models listed as served in the Alibaba docs)
+        cost:
+          input: 0.574
+          output: 2.294
+          cacheRead: 0
+          cacheWrite: 0
+        contextWindow: 229376
+        maxTokens: 16384
         compat:
           supportsDeveloperRole: false
