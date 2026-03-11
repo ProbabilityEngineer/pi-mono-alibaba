@@ -16,8 +16,8 @@
           "contextWindow": 262144,
           "maxTokens": 65536,
           "compat": { "supportsDeveloperRole": false,
-		  "supportsReasoningEffort": true,
-		  "thinkingFormat": "qwen" }
+            "supportsReasoningEffort": true,
+            "thinkingFormat": "qwen" }
         },
         {
           "id": "qwen3.5-plus",
@@ -28,8 +28,8 @@
           "contextWindow": 1000000,
           "maxTokens": 65536,
           "compat": { "supportsDeveloperRole": false,
-		  "supportsReasoningEffort": true,
-		  "thinkingFormat": "qwen" }
+            "supportsReasoningEffort": true,
+            "thinkingFormat": "qwen" }
         },
         {
           "id": "qwen3-coder-next",
@@ -40,32 +40,56 @@
           "contextWindow": 262144,
           "maxTokens": 65536,
           "compat": { "supportsDeveloperRole": false,
-		  "supportsReasoningEffort": true,
-		  "thinkingFormat": "qwen" }
+            "supportsReasoningEffort": true,
+            "thinkingFormat": "qwen" }
         },
         {
           "id": "glm-4.7",
           "name": "glm-4.7",
           "reasoning": true,
           "input": ["text", "image"],
-          "cost": { "input": 0.431, "output": 3.154, "cacheRead": 0.06308, "cacheWrite": 0.53875 },
+          "cost": { "input": 0.431, "output": 3.154, "cacheRead": 0, "cacheWrite": 0 },
           "contextWindow": 202752,
           "maxTokens": 16384,
           "compat": { "supportsDeveloperRole": false,
-		  "supportsReasoningEffort": true,
-		  "thinkingFormat": "qwen" }
+            "supportsReasoningEffort": true,
+            "thinkingFormat": "qwen" }
+        },
+        {
+          "id": "glm-5",
+          "name": "glm-5",
+          "reasoning": true,
+          "input": ["text"],
+          "cost": { "input": 0.573, "output": 0.86, "cacheRead": 0.0573, "cacheWrite": 0.573 },
+          "contextWindow": 202752,
+          "maxTokens": 16384,
+          "compat": { "supportsDeveloperRole": false,
+            "supportsReasoningEffort": true,
+            "thinkingFormat": "qwen" }
+        },
+        {
+          "id": "MiniMax-M2.5",
+          "name": "MiniMax-M2.5",
+          "reasoning": true,
+          "input": ["text"],
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "contextWindow": 196608,
+          "maxTokens": 32768,
+          "compat": { "supportsDeveloperRole": false,
+            "supportsReasoningEffort": true,
+            "thinkingFormat": "qwen" }
         },
         {
           "id": "kimi-k2.5",
           "name": "kimi-k2.5",
           "reasoning": true,
           "input": ["text", "image"],
-          "cost": { "input": 0.574, "output": 3.011, "cacheRead": 0, "cacheWrite": 0 },
+          "cost": { "input": 0.574, "output": 3.011, "cacheRead": 0.0574, "cacheWrite": 0.7175 },
           "contextWindow": 262144,
           "maxTokens": 32768,
           "compat": { "supportsDeveloperRole": false,
-		  "supportsReasoningEffort": true,
-		  "thinkingFormat": "qwen" }
+            "supportsReasoningEffort": true,
+            "thinkingFormat": "qwen" }
         }
       ]
     }
