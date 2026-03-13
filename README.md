@@ -28,7 +28,7 @@ Coder Next and Max are text only, 256k context window. Max is the daddy, but may
 Pricing and Caching numbers are inferred from Alibaba docs.
 
 ## Usage limit ratio assumptions (Price)
-I filled the price and caching price fields in from Alibaba's docs on api-calling price, so when I say one model costs more than another, that's an assumotion. Alibaba's coding plan is metered by requests and seems rather generous.
+I filled the price and caching price fields in from Alibaba's docs on api-calling price, so when I say one model costs more than another, that's an assumption. Alibaba's coding plan is metered by requests and seems rather generous.
 
 ### Price high to low
 Qwen3-Max (significantly)
